@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">WaveProgress</string>
+    <string name="preference_reversedirection_title">Reverse direction</string>
+    <string name="preference_reversedirection_subtitle">Reverse the direction of the wave animation</string>
+    <string name="preference_flatlineondrag_title">Flatline on drag</string>
+    <string name="preference_flatlineondrag_subtitle">Flatten the wave when adjusting slider</string>
+    <string name="preference_animatewave_title">Animate wave</string>
+    <string name="preference_animatewave_subtitle">Toggle the wave animation on/off</string>
+    <string name="preference_reverseflatline_title">Reverse flatline</string>
+    <string name="preference_reverseflatline_subtitle">Only show wave when adjusting slider</string>
+    <string name="button_view_external">View on GitHub</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.waveprogress.ui.theme
+package com.waveslider.sample.theme
 
 import androidx.compose.ui.graphics.Color
 

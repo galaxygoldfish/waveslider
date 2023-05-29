@@ -1,6 +1,5 @@
-package com.galaxygoldfish.waveprogress
+package com.galaxygoldfish.waveslider
 
-import android.graphics.Color
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color

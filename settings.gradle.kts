@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WaveProgress"
+rootProject.name = "WaveSlider"
 include(":app")
-include(":waveprogress")
+include(":waveslider")

@@ -1,4 +1,4 @@
-package com.galaxygoldfish.waveprogress
+package com.galaxygoldfish.waveslider
 
 /**
  * @param reverseDirection Whether to animate the wave in the reverse direction.
@@ -6,7 +6,7 @@ package com.galaxygoldfish.waveprogress
  * @param flatlineOnDrag Whether to have the slider become a straight line when dragged
  * and be a wave when released
  * @param animateWave Whether to animate the wave infinitely
- * @param reverseFlatline  Have the slider be a flat line by default and show the wave
+ * @param reverseFlatline Have the slider be a flat line by default and show the wave
  * when dragged
  */
 data class WaveAnimationOptions(

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.waveprogress"
+    namespace = "com.waveslider.sample"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.waveprogress"
+        applicationId = "com.waveslider.sample"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -67,5 +67,5 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
-    implementation(project(":waveprogress"))
+    implementation(project(":waveslider"))
 }

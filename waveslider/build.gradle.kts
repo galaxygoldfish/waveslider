@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.galaxygoldfish.waveprogress"
+    namespace = "com.galaxygoldfish.waveslider"
     compileSdk = 33
 
     defaultConfig {
@@ -23,6 +23,12 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

@@ -103,7 +103,13 @@ fun WaveSlider(
         enabled = enabled,
         modifier = modifier,
         thumb = {
-            CompositionLocalProvider(LocalThumbColor provides colors.thumbColor) {
+            CompositionLocalProvider(
+                LocalThumbColor provides if (enabled) {
+                    colors.thumbColor
+                } else {
+                    colors.disabledThumbColor
+                }
+            ) {
                 thumb()
             }
         },
@@ -127,7 +133,7 @@ fun WaveSlider(
                 val path = Path()
                 for (x in startX.toInt()..endX.toInt()) {
                     var modifiedX = x.toFloat()
-                    if (animationOptions.animateWave) {
+                    if (animationOptions.animateWave && enabled) {
                         if (animationOptions.reverseDirection) {
                             modifiedX += phaseShiftFloat
                         } else {

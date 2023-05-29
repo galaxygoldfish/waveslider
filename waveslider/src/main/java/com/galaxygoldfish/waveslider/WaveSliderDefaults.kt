@@ -25,8 +25,8 @@ object WaveSliderDefaults {
         thumbColor: Color = MaterialTheme.colorScheme.primary,
         activeTrackColor: Color = MaterialTheme.colorScheme.primary,
         inactiveTrackColor: Color = MaterialTheme.colorScheme.primaryContainer,
-        disabledThumbColor: Color = MaterialTheme.colorScheme.primary.copy(0.5F),
-        disabledActiveTrackColor: Color = MaterialTheme.colorScheme.primary.copy(0.5F),
+        disabledThumbColor: Color = MaterialTheme.colorScheme.secondaryContainer,
+        disabledActiveTrackColor: Color = MaterialTheme.colorScheme.secondaryContainer,
         disabledInactiveTrackColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(0.5F)
     ) : WaveSliderColors = WaveSliderColors(
         thumbColor = thumbColor,

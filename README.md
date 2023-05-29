@@ -35,7 +35,7 @@ dependencies {
 
 ### Demo
 
-Read the full documentation [here](https://github.com/galaxygoldfish/waveslider/wiki/Documentation)
+View the full documentation [here](https://github.com/galaxygoldfish/waveslider/wiki/Documentation), and download the latest demo app [here](https://github.com/galaxygoldfish/waveslider/releases)
 
 <img src="https://github.com/galaxygoldfish/waveslider/blob/main/media/WaveSliderDemoPreview.png" width=30% align="left" />
 

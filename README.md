@@ -64,7 +64,7 @@ WaveSlider(
 ```
 
 
-
+<br></br>
 ### License
 ```
 Copyright 2023 Sebastian Hriscu

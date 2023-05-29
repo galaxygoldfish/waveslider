@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "WaveProgress"
 include(":app")
- 
+include(":waveprogress")

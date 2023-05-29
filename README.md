@@ -34,6 +34,9 @@ dependencies {
 ```
 
 ### Demo
+
+Read the full documentation [here](https://github.com/galaxygoldfish/waveslider/wiki/Documentation)
+
 <img src="https://github.com/galaxygoldfish/waveslider/blob/main/media/WaveSliderDemoPreview.png" width=30% align="left" />
 
 ```kotlin

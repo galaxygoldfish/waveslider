@@ -3,7 +3,7 @@
   <img src="https://img.shields.io/github/stars/galaxygoldfish/waveslider?style=for-the-badge&color=8FDEFF" />
   <img src="https://img.shields.io/github/watchers/galaxygoldfish/waveslider?color=C9A8FF&style=for-the-badge" />
   <img src="https://img.shields.io/github/v/release/galaxygoldfish/waveslider?color=8FFF9B&label=version&style=for-the-badge" />
-  <img src="https://img.shields.io/github/license/galaxygoldfish/waveslider?color=FF9E9E&style=for-the-badge" />
+  <img src="https://img.shields.io/static/v1?label=LICENSE&message=APACHE%202.0&color=FF9E9E&style=for-the-badge" />
 </div>
 <br>
 

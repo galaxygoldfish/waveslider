@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">WaveProgress</string>
+    <string name="demo_chip">DEMO</string>
     <string name="preference_reversedirection_title">Reverse direction</string>
     <string name="preference_reversedirection_subtitle">Reverse the direction of the wave animation</string>
     <string name="preference_flatlineondrag_title">Flatline on drag</string>

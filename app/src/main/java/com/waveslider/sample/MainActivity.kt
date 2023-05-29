@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,9 +28,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableState
@@ -43,6 +46,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.enableSavedStateHandles
 import com.galaxygoldfish.waveslider.CircleThumb
 import com.galaxygoldfish.waveslider.DiamondThumb
 import com.galaxygoldfish.waveslider.LocalThumbColor
@@ -60,7 +64,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WaveProgressTheme {
                 SetSystemBarColors(
-                    colorStatus = MaterialTheme.colorScheme.surfaceVariant,
+                    colorStatus = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp),
                     colorNav = MaterialTheme.colorScheme.surface
                 )
                 var reverseDirection by remember { mutableStateOf(false) }
@@ -75,9 +79,27 @@ class MainActivity : ComponentActivity() {
                     Scaffold(
                         topBar = {
                             TopAppBar(
-                                title = { Text(stringResource(id = R.string.app_name)) },
+                                title = {
+                                    Row {
+                                        Text(stringResource(id = R.string.app_name))
+                                    }
+                                },
+                                actions = {
+                                    Card(
+                                        colors = CardDefaults.cardColors(
+                                            containerColor = MaterialTheme.colorScheme.tertiaryContainer
+                                        ),
+                                        modifier = Modifier.padding(end = 15.dp)
+                                    ) {
+                                        Text(
+                                            text = stringResource(id = R.string.demo_chip),
+                                            style = MaterialTheme.typography.labelSmall,
+                                            modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp)
+                                        )
+                                    }
+                                },
                                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                                    containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp)
                                 )
                             )
                         }
@@ -141,6 +163,12 @@ class MainActivity : ComponentActivity() {
                             }
                             Column(modifier = Modifier.padding(top = 20.dp)) {
                                 SwitchPreference(
+                                    title = stringResource(R.string.preference_animatewave_title),
+                                    subtitle = stringResource(R.string.preference_animatewave_subtitle),
+                                    value = animateWave,
+                                    onValueChange = { animateWave = it }
+                                )
+                                SwitchPreference(
                                     title = stringResource(R.string.preference_reversedirection_title),
                                     subtitle = stringResource(R.string.preference_reversedirection_subtitle),
                                     value = reverseDirection,
@@ -151,12 +179,6 @@ class MainActivity : ComponentActivity() {
                                     subtitle = stringResource(R.string.preference_flatlineondrag_subtitle),
                                     value = flatlineOnDrag,
                                     onValueChange = { flatlineOnDrag = it }
-                                )
-                                SwitchPreference(
-                                    title = stringResource(R.string.preference_animatewave_title),
-                                    subtitle = stringResource(R.string.preference_animatewave_subtitle),
-                                    value = animateWave,
-                                    onValueChange = { animateWave = it }
                                 )
                                 SwitchPreference(
                                     title = stringResource(R.string.preference_reverseflatline_title),
@@ -171,8 +193,9 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity.startActivity(this)
                                         }
                                     },
-                                    modifier = Modifier.fillMaxWidth()
-                                        .padding(20.dp)
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(start = 20.dp, top = 30.dp, end = 20.dp)
                                 ) {
                                     Icon(
                                         painter = painterResource(R.drawable.ic_github),
@@ -203,6 +226,9 @@ class MainActivity : ComponentActivity() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .clickable {
+                    onValueChange(!value)
+                }
                 .padding(horizontal = 20.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically

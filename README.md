@@ -41,23 +41,18 @@ var sliderValue by remember { mutableStateOf(0.4F) }
 
 WaveSlider(
     value = sliderValue,
-    onValueChange = { newValue ->
-        sliderValue = it 
-    },
+    onValueChange = { sliderValue = it },
     animationOptions = WaveAnimationOptions(
         reverseDirection = false,
         flatlineOnDrag = true,
         animateWave = true,
         reverseFlatline = false
     ),
-    thumb = {
-        DiamondThumb() 
-    },
+    thumb = { DiamondThumb() },
     colors = WaveSliderDefaults.colors(
         thumbColor = MaterialTheme.colorScheme.secondary,
         activeTrackColor = MaterialTheme.colorScheme.secondary,
-        inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer,
-        disabledThumbColor = MaterialTheme.colorScheme.secondary.copy(0.5F)
+        inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer
     ),
     amplitude = 15F,
     frequency = 0.07F,

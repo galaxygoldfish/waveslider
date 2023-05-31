@@ -7,5 +7,5 @@ data class WaveParams(
     val waveAnimationOptions: WaveAnimationOptions = WaveAnimationOptions(),
     val amplitude: Float = 15f,
     val frequency: Float = 0.07F,
-    val steps: Int = 10
+    val steps: Int = 0
 )

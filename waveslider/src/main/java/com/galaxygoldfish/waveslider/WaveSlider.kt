@@ -14,6 +14,7 @@
  */
 package com.galaxygoldfish.waveslider
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -66,7 +67,7 @@ fun WaveSlider(
     enabled: Boolean = true,
     thumb: @Composable () -> Unit = { PillThumb() },
     waveParams: WaveParams = WaveParams(),
-    modifier: Modifier = Modifier
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
 ) {
     val amplitude = waveParams.amplitude
     val frequency = waveParams.frequency
@@ -209,7 +210,7 @@ fun WaveSlider(
     colors: WaveSliderColors = WaveSliderDefaults.colors(),
     enabled: Boolean = true,
     thumb: @Composable () -> Unit = { PillThumb() },
-    modifier: Modifier = Modifier
+    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
 ) {
     WaveSlider(
         value = value,

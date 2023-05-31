@@ -98,6 +98,7 @@ fun WaveSlider(
         )
     ).value
     Slider(
+        steps = waveParams.steps,
         value = value,
         onValueChange = onValueChange,
         interactionSource = interactionSource,

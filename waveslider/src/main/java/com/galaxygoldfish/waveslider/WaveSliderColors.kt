@@ -14,13 +14,15 @@
  */
 package com.galaxygoldfish.waveslider
 
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 
+@Stable
 data class WaveSliderColors(
-    var thumbColor: Color,
-    var activeTrackColor: Color,
-    var inactiveTrackColor: Color,
-    var disabledThumbColor: Color,
-    var disabledActiveTrackColor: Color,
-    var disabledInactiveTrackColor: Color
+    val thumbColor: Color,
+    val activeTrackColor: Color,
+    val inactiveTrackColor: Color,
+    val disabledThumbColor: Color,
+    val disabledActiveTrackColor: Color,
+    val disabledInactiveTrackColor: Color
 )

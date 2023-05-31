@@ -60,6 +60,7 @@ import kotlin.math.sin
 fun WaveSlider(
     value: Float,
     onValueChange: (Float) -> Unit,
+    onValueChangeFinished: (Float) -> Unit = {},
     colors: WaveSliderColors = WaveSliderDefaults.colors(),
     enabled: Boolean = true,
     thumb: @Composable () -> Unit = { PillThumb() },
@@ -100,6 +101,9 @@ fun WaveSlider(
     Slider(
         steps = waveParams.steps,
         value = value,
+        onValueChangeFinished = {
+            onValueChangeFinished(value)
+        },
         onValueChange = onValueChange,
         interactionSource = interactionSource,
         enabled = enabled,

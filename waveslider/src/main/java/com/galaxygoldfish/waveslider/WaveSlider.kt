@@ -14,6 +14,7 @@
  */
 package com.galaxygoldfish.waveslider
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -110,11 +111,14 @@ fun WaveSlider(
         modifier = modifier,
         thumb = {
             CompositionLocalProvider(
-                LocalThumbColor provides if (enabled) {
-                    colors.thumbColor
-                } else {
-                    colors.disabledThumbColor
-                }
+                LocalThumbColor provides animateColorAsState(
+                    targetValue =
+                    if (enabled) {
+                        colors.thumbColor
+                    } else {
+                        colors.disabledThumbColor
+                    }
+                ).value
             ) {
                 thumb()
             }

@@ -199,7 +199,8 @@ class MainActivity : ComponentActivity() {
                                 FilledTonalButton(
                                     onClick = {
                                         Intent(ACTION_VIEW).apply {
-                                            data = Uri.parse("https://github.com/galaxygoldfish/waveslider")
+                                            data =
+                                                Uri.parse("https://github.com/galaxygoldfish/waveslider")
                                             this@MainActivity.startActivity(this)
                                         }
                                     },

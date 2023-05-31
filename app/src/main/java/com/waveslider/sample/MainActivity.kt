@@ -17,18 +17,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
-import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -46,16 +43,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.enableSavedStateHandles
 import com.galaxygoldfish.waveslider.CircleThumb
 import com.galaxygoldfish.waveslider.DiamondThumb
 import com.galaxygoldfish.waveslider.LocalThumbColor
 import com.galaxygoldfish.waveslider.PillThumb
 import com.galaxygoldfish.waveslider.SquareThumb
 import com.galaxygoldfish.waveslider.WaveAnimationOptions
+import com.galaxygoldfish.waveslider.WaveParams
 import com.galaxygoldfish.waveslider.WaveSlider
-import com.waveslider.sample.theme.WaveProgressTheme
 import com.waveslider.sample.theme.SetSystemBarColors
+import com.waveslider.sample.theme.WaveProgressTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
@@ -94,12 +91,17 @@ class MainActivity : ComponentActivity() {
                                         Text(
                                             text = stringResource(id = R.string.demo_chip),
                                             style = MaterialTheme.typography.labelSmall,
-                                            modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp)
+                                            modifier = Modifier.padding(
+                                                vertical = 5.dp,
+                                                horizontal = 10.dp
+                                            )
                                         )
                                     }
                                 },
-                                colors = TopAppBarDefaults.smallTopAppBarColors(
-                                    containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(2.dp)
+                                colors = TopAppBarDefaults.topAppBarColors(
+                                    containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(
+                                        2.dp
+                                    )
                                 )
                             )
                         }
@@ -109,11 +111,13 @@ class MainActivity : ComponentActivity() {
                             WaveSlider(
                                 value = sliderValue,
                                 onValueChange = { sliderValue = it },
-                                animationOptions = WaveAnimationOptions(
-                                    reverseDirection,
-                                    flatlineOnDrag,
-                                    animateWave,
-                                    reverseFlatline
+                                waveParams = WaveParams(
+                                    waveAnimationOptions = WaveAnimationOptions(
+                                        reverseDirection = reverseDirection,
+                                        flatlineOnDrag = flatlineOnDrag,
+                                        animateWave = animateWave,
+                                        reverseFlatline = reverseFlatline
+                                    )
                                 ),
                                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 50.dp),
                                 thumb = {

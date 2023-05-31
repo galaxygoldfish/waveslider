@@ -46,15 +46,13 @@ import kotlin.math.sin
  *
  * @param value Current value representing the progress of the slider
  * @param onValueChange Callback in which value should be updated
- * @param amplitude Amplitude of the waves (sin waves)
- * @param frequency Frequency of the waves (sin waves)
  * @param colors [WaveSliderColors] representing the colors of the
  * slider in various states. See [WaveSliderDefaults.colors]
  * @param enabled Whether the slider will respond to user input
  * @param thumb Can be a custom composable used for the thumb of the
  * slider. By default, a [PillThumb] is used. If you are creating a custom
  * thumb, use [LocalThumbColor] to match the colors of the rest of the slider
- * @param animationOptions A [WaveAnimationOptions] used to customize
+ * @param waveParams A [WaveParams] used to customize
  * the wave animation
  */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,14 +60,16 @@ import kotlin.math.sin
 fun WaveSlider(
     value: Float,
     onValueChange: (Float) -> Unit,
-    amplitude: Float = 15F,
-    frequency: Float = 0.07F,
     colors: WaveSliderColors = WaveSliderDefaults.colors(),
     enabled: Boolean = true,
     thumb: @Composable () -> Unit = { PillThumb() },
-    animationOptions: WaveAnimationOptions = WaveAnimationOptions(),
+    waveParams: WaveParams = WaveParams(),
     modifier: Modifier = Modifier
 ) {
+    val amplitude = waveParams.amplitude
+    val frequency = waveParams.frequency
+    val animationOptions = waveParams.waveAnimationOptions
+
     var isDragging by remember { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
     LaunchedEffect(interactionSource) {
@@ -78,6 +78,7 @@ fun WaveSlider(
                 is DragInteraction.Start -> {
                     isDragging = true
                 }
+
                 is DragInteraction.Stop -> {
                     isDragging = false
                 }
@@ -88,7 +89,7 @@ fun WaveSlider(
     val phaseShiftFloat = infiniteTransition.animateFloat(
         label = "Wave phase shift",
         initialValue = 0F,
-        targetValue = 90F,
+        targetValue = 90f,
         animationSpec = infiniteRepeatable(
             animation = keyframes {
                 durationMillis = 1000

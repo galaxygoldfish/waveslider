@@ -174,3 +174,51 @@ fun WaveSlider(
         }
     )
 }
+
+
+/**
+ * Animated wavy slider component similar to the one seen in the
+ * Android 13 media player notification.
+ *
+ * @param value Current value representing the progress of the slider
+ * @param onValueChange Callback in which value should be updated
+ * @param amplitude Amplitude of the waves (sin waves)
+ * @param frequency Frequency of the waves (sin waves)
+ * @param colors [WaveSliderColors] representing the colors of the
+ * slider in various states. See [WaveSliderDefaults.colors]
+ * @param enabled Whether the slider will respond to user input
+ * @param thumb Can be a custom composable used for the thumb of the
+ * slider. By default, a [PillThumb] is used. If you are creating a custom
+ * thumb, use [LocalThumbColor] to match the colors of the rest of the slider
+ * @param animationOptions A [WaveAnimationOptions] used to customize
+ * the wave animation
+ */
+@Deprecated("Consider using WaveParams instead", replaceWith = ReplaceWith("WaveSlider"))
+@Composable
+fun WaveSlider(
+    value: Float,
+    onValueChange: (Float) -> Unit,
+    onValueChangeFinished: (Float) -> Unit = {},
+    amplitude: Float = 15F,
+    frequency: Float = 0.07F,
+    animationOptions: WaveAnimationOptions = WaveAnimationOptions(),
+    colors: WaveSliderColors = WaveSliderDefaults.colors(),
+    enabled: Boolean = true,
+    thumb: @Composable () -> Unit = { PillThumb() },
+    modifier: Modifier = Modifier
+) {
+    WaveSlider(
+        value = value,
+        onValueChange = onValueChange,
+        onValueChangeFinished = onValueChangeFinished,
+        waveParams = WaveParams(
+            waveAnimationOptions = animationOptions,
+            amplitude = amplitude,
+            frequency = frequency,
+        ),
+        colors = colors,
+        enabled = enabled,
+        thumb = thumb,
+        modifier = modifier
+    )
+}

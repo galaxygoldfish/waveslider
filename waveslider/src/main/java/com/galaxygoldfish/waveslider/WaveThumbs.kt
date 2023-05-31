@@ -16,7 +16,6 @@ package com.galaxygoldfish.waveslider
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -36,13 +35,13 @@ val LocalThumbColor = compositionLocalOf { Color.Transparent }
 @Composable
 fun PillThumb() {
     Box(Modifier.width(15.dp)) {
-        Column(
+        Box(
             modifier = Modifier
                 .size(6.dp, 30.dp)
                 .clip(MaterialTheme.shapes.small)
                 .background(LocalThumbColor.current)
                 .align(Alignment.CenterEnd)
-        ) {}
+        )
     }
 }
 

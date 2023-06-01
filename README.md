@@ -9,9 +9,9 @@
 
 🌊 Animated wavy slider component as a light library for jetpack compose, similar to the slider present in the Android 13 media player notification
 
-- Customizable ⚡
-- Lightweight 🎉 
-- Easy to use 🤓
+- Customizable
+- Lightweight 
+- Easy to use 
 
 ### Implementation
 
@@ -45,7 +45,7 @@ var sliderValue by remember { mutableStateOf(0.4F) }
 WaveSlider(
     value = sliderValue,
     onValueChange = { sliderValue = it },
-    animationOptions = WaveAnimationOptions(
+    animationOptions = WaveSliderDefaults.animationOptions(
         reverseDirection = false,
         flatlineOnDrag = true,
         animateWave = true,
@@ -54,8 +54,7 @@ WaveSlider(
     thumb = { DiamondThumb() },
     colors = WaveSliderDefaults.colors(
         thumbColor = MaterialTheme.colorScheme.secondary,
-        activeTrackColor = MaterialTheme.colorScheme.secondary,
-        inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer
+        activeTrackColor = MaterialTheme.colorScheme.secondary
     ),
     amplitude = 15F,
     frequency = 0.07F,

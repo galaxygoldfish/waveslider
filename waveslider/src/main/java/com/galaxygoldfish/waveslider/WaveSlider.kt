@@ -99,10 +99,10 @@ fun WaveSlider(
     val phaseShiftFloat = infiniteTransition.animateFloat(
         label = "Wave phase shift",
         initialValue = 0F,
-        targetValue = 90f,
+        targetValue = frequency * 1000 * 4 * 3.14F,
         animationSpec = infiniteRepeatable(
             animation = keyframes {
-                durationMillis = 1000
+                durationMillis = animationOptions.animationSpeedMs
             },
             repeatMode = RepeatMode.Restart
         )

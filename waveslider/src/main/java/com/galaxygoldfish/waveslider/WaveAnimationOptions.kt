@@ -24,11 +24,14 @@ import androidx.compose.runtime.Stable
  * @param animateWave Whether to animate the wave infinitely
  * @param reverseFlatline Have the slider be a flat line by default and show the wave
  * when dragged
+ * @param animationSpeedMs How fast the wave moves, this is the time in milliseconds
+ * that it will take one period of the wave to travel the distance of the slider
  */
 @Stable
 data class WaveAnimationOptions internal constructor(
     val reverseDirection: Boolean = false,
     val flatlineOnDrag: Boolean = true,
     val animateWave: Boolean = true,
-    val reverseFlatline: Boolean = false
+    val reverseFlatline: Boolean = false,
+    val animationSpeedMs: Int = 10000
 )

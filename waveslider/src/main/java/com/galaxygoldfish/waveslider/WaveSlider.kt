@@ -175,7 +175,7 @@ fun WaveSlider(
                     } else {
                         colors.disabledInactiveTrackColor
                     },
-                    strokeWidth = 8F,
+                    strokeWidth = waveOptions.trackWidth,
                     cap = StrokeCap.Round,
                     start = Offset(endX + 1, centerY),
                     end = Offset(size.width, centerY)
@@ -213,7 +213,7 @@ fun WaveSlider(
                                 Color.Transparent
                             }
                         },
-                        strokeWidth = 10F,
+                        strokeWidth = 5f,
                         cap = StrokeCap.Round
                     )
                 }

@@ -14,7 +14,6 @@
  */
 package com.galaxygoldfish.waveslider
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -48,30 +47,33 @@ import kotlin.math.sin
  *
  * @param value Current value representing the progress of the slider
  * @param onValueChange Callback in which value should be updated
+ * @param modifier Modifier to be applied to the Slider
+ * @param onValueChangeFinished Callback invoked after onValueChange with new value
  * @param colors [WaveSliderColors] representing the colors of the
  * slider in various states. See [WaveSliderDefaults.colors]
+ * @param animationOptions Options used to customize the animation of the wave
+ * @param waveOptions Options used to customize the wave shape
  * @param enabled Whether the slider will respond to user input
  * @param thumb Can be a custom composable used for the thumb of the
  * slider. By default, a [PillThumb] is used. If you are creating a custom
  * thumb, use [LocalThumbColor] to match the colors of the rest of the slider
- * @param waveParams A [WaveParams] used to customize
- * the wave animation
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WaveSlider(
     value: Float,
     onValueChange: (Float) -> Unit,
+    modifier: Modifier = Modifier,
     onValueChangeFinished: (Float) -> Unit = {},
     colors: WaveSliderColors = WaveSliderDefaults.colors(),
+    animationOptions: WaveAnimationOptions = WaveSliderDefaults.animationOptions(),
+    waveOptions: WaveOptions = WaveSliderDefaults.waveOptions(),
     enabled: Boolean = true,
     thumb: @Composable () -> Unit = { PillThumb() },
-    waveParams: WaveParams = WaveParams(),
-    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
+    steps: Int = 0
 ) {
-    val amplitude = waveParams.amplitude
-    val frequency = waveParams.frequency
-    val animationOptions = waveParams.waveAnimationOptions
+    val amplitude = waveOptions.amplitude
+    val frequency = waveOptions.frequency
 
     var isDragging by remember { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
@@ -101,7 +103,7 @@ fun WaveSlider(
         )
     ).value
     Slider(
-        steps = waveParams.steps,
+        steps = steps,
         value = value,
         onValueChangeFinished = {
             onValueChangeFinished(value)
@@ -113,12 +115,12 @@ fun WaveSlider(
         thumb = {
             CompositionLocalProvider(
                 LocalThumbColor provides animateColorAsState(
-                    targetValue =
-                    if (enabled) {
+                    targetValue = if (enabled) {
                         colors.thumbColor
                     } else {
                         colors.disabledThumbColor
-                    }
+                    },
+                    label = "Thumb color"
                 ).value
             ) {
                 thumb()
@@ -177,53 +179,5 @@ fun WaveSlider(
                 )
             }
         }
-    )
-}
-
-
-/**
- * Animated wavy slider component similar to the one seen in the
- * Android 13 media player notification.
- *
- * @param value Current value representing the progress of the slider
- * @param onValueChange Callback in which value should be updated
- * @param amplitude Amplitude of the waves (sin waves)
- * @param frequency Frequency of the waves (sin waves)
- * @param colors [WaveSliderColors] representing the colors of the
- * slider in various states. See [WaveSliderDefaults.colors]
- * @param enabled Whether the slider will respond to user input
- * @param thumb Can be a custom composable used for the thumb of the
- * slider. By default, a [PillThumb] is used. If you are creating a custom
- * thumb, use [LocalThumbColor] to match the colors of the rest of the slider
- * @param animationOptions A [WaveAnimationOptions] used to customize
- * the wave animation
- */
-@Deprecated("Consider using WaveParams instead", replaceWith = ReplaceWith("WaveSlider"))
-@Composable
-fun WaveSlider(
-    value: Float,
-    onValueChange: (Float) -> Unit,
-    onValueChangeFinished: (Float) -> Unit = {},
-    amplitude: Float = 15F,
-    frequency: Float = 0.07F,
-    animationOptions: WaveAnimationOptions = WaveAnimationOptions(),
-    colors: WaveSliderColors = WaveSliderDefaults.colors(),
-    enabled: Boolean = true,
-    thumb: @Composable () -> Unit = { PillThumb() },
-    @SuppressLint("ModifierParameter") modifier: Modifier = Modifier
-) {
-    WaveSlider(
-        value = value,
-        onValueChange = onValueChange,
-        onValueChangeFinished = onValueChangeFinished,
-        waveParams = WaveParams(
-            waveAnimationOptions = animationOptions,
-            amplitude = amplitude,
-            frequency = frequency,
-        ),
-        colors = colors,
-        enabled = enabled,
-        thumb = thumb,
-        modifier = modifier
     )
 }

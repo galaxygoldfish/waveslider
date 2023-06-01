@@ -37,4 +37,26 @@ object WaveSliderDefaults {
         disabledInactiveTrackColor = disabledInactiveTrackColor
     )
 
+    @Composable
+    fun animationOptions(
+        reverseDirection: Boolean = false,
+        flatlineOnDrag: Boolean = true,
+        animateWave: Boolean = true,
+        reverseFlatline: Boolean = false
+    ): WaveAnimationOptions = WaveAnimationOptions(
+        reverseDirection = reverseDirection,
+        flatlineOnDrag = flatlineOnDrag,
+        animateWave = animateWave,
+        reverseFlatline = reverseFlatline
+    )
+
+    @Composable
+    fun waveOptions(
+        amplitude: Float = 15F,
+        frequency: Float = 0.07F
+    ): WaveOptions = WaveOptions(
+        amplitude = amplitude,
+        frequency = frequency
+    )
+
 }

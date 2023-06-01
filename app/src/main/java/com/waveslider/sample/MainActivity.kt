@@ -50,9 +50,8 @@ import com.galaxygoldfish.waveslider.DiamondThumb
 import com.galaxygoldfish.waveslider.LocalThumbColor
 import com.galaxygoldfish.waveslider.PillThumb
 import com.galaxygoldfish.waveslider.SquareThumb
-import com.galaxygoldfish.waveslider.WaveAnimationOptions
-import com.galaxygoldfish.waveslider.WaveParams
 import com.galaxygoldfish.waveslider.WaveSlider
+import com.galaxygoldfish.waveslider.WaveSliderDefaults
 import com.waveslider.sample.theme.SetSystemBarColors
 import com.waveslider.sample.theme.WaveProgressTheme
 
@@ -117,13 +116,11 @@ class MainActivity : ComponentActivity() {
                             WaveSlider(
                                 value = sliderValue,
                                 onValueChange = { sliderValue = it },
-                                waveParams = WaveParams(
-                                    waveAnimationOptions = WaveAnimationOptions(
-                                        reverseDirection = reverseDirection,
-                                        flatlineOnDrag = flatlineOnDrag,
-                                        animateWave = animateWave,
-                                        reverseFlatline = reverseFlatline
-                                    )
+                                animationOptions = WaveSliderDefaults.animationOptions(
+                                    reverseDirection = reverseDirection,
+                                    flatlineOnDrag = flatlineOnDrag,
+                                    animateWave = animateWave,
+                                    reverseFlatline = reverseFlatline
                                 ),
                                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 50.dp),
                                 thumb = {

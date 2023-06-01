@@ -18,7 +18,7 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.graphics.Color
 
 @Stable
-data class WaveSliderColors(
+data class WaveSliderColors internal constructor(
     val thumbColor: Color,
     val activeTrackColor: Color,
     val inactiveTrackColor: Color,

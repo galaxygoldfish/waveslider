@@ -26,7 +26,7 @@ import androidx.compose.runtime.Stable
  * when dragged
  */
 @Stable
-data class WaveAnimationOptions(
+data class WaveAnimationOptions internal constructor(
     val reverseDirection: Boolean = false,
     val flatlineOnDrag: Boolean = true,
     val animateWave: Boolean = true,

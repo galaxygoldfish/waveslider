@@ -14,6 +14,8 @@
  */
 package com.galaxygoldfish.waveslider
 
+import androidx.compose.runtime.Stable
+
 /**
  * @param reverseDirection Whether to animate the wave in the reverse direction.
  * (By default the wave moves to the right)
@@ -23,9 +25,10 @@ package com.galaxygoldfish.waveslider
  * @param reverseFlatline Have the slider be a flat line by default and show the wave
  * when dragged
  */
+@Stable
 data class WaveAnimationOptions(
-    var reverseDirection: Boolean = false,
-    var flatlineOnDrag: Boolean = true,
-    var animateWave: Boolean = true,
-    var reverseFlatline: Boolean = false
+    val reverseDirection: Boolean = false,
+    val flatlineOnDrag: Boolean = true,
+    val animateWave: Boolean = true,
+    val reverseFlatline: Boolean = false
 )

@@ -9,7 +9,7 @@ android {
     namespace = "com.galaxygoldfish.waveslider"
     compileSdk = 33
     defaultConfig {
-        minSdk = 26
+        minSdk = 21
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

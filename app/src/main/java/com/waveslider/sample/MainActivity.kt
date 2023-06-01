@@ -135,7 +135,9 @@ class MainActivity : ComponentActivity() {
                                             3 -> DiamondThumb()
                                         }
                                     }
-                                }
+                                },
+                                steps = 10,
+                                enabled = false
                             )
                             Row(
                                 modifier = Modifier

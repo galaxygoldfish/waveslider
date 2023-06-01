@@ -36,7 +36,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.lerp
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.PointMode
+import androidx.compose.ui.graphics.StampedPathEffectStyle
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import kotlin.math.sin
@@ -126,7 +131,7 @@ fun WaveSlider(
                 thumb()
             }
         },
-        track = {
+        track = { sliderPositions ->
             val animatedAmplitude = animateFloatAsState(
                 targetValue = if (animationOptions.flatlineOnDrag) {
                     if (animationOptions.reverseFlatline) {
@@ -177,6 +182,43 @@ fun WaveSlider(
                     start = Offset(endX + 1, centerY),
                     end = Offset(size.width, centerY)
                 )
+                sliderPositions.tickFractions.groupBy {
+                    it > sliderPositions.activeRange.endInclusive ||
+                            it < sliderPositions.activeRange.start
+                }.forEach { (outsideFraction, list) ->
+                    drawPoints(
+                        points = list.map {
+                            Offset(
+                                x = lerp(
+                                    start = Offset(startX, centerY),
+                                    stop = Offset(size.width, centerY),
+                                    fraction = it
+                                ).x,
+                                y = center.y
+                            )
+                        },
+                        pointMode = PointMode.Points,
+                        color = if (outsideFraction) {
+                            if (enabled) {
+                                colors.inactiveTickColor
+                            } else {
+                                colors.disabledInactiveTickColor
+                            }
+                        } else {
+                            if (animatedAmplitude == 0F) {
+                                if (enabled) {
+                                    colors.activeTickColor
+                                } else {
+                                    colors.disabledActiveTickColor
+                                }
+                            } else {
+                                Color.Transparent
+                            }
+                        },
+                        strokeWidth = 10F,
+                        cap = StrokeCap.Round
+                    )
+                }
             }
         }
     )

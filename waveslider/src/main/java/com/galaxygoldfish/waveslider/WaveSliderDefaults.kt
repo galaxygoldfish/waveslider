@@ -24,16 +24,24 @@ object WaveSliderDefaults {
     fun colors(
         thumbColor: Color = MaterialTheme.colorScheme.primary,
         activeTrackColor: Color = MaterialTheme.colorScheme.primary,
+        activeTickColor: Color = MaterialTheme.colorScheme.surfaceVariant,
         inactiveTrackColor: Color = MaterialTheme.colorScheme.primaryContainer,
+        inactiveTickColor: Color = MaterialTheme.colorScheme.primary.copy(0.5F),
         disabledThumbColor: Color = MaterialTheme.colorScheme.secondaryContainer,
+        disabledActiveTickColor: Color = MaterialTheme.colorScheme.primary.copy(0.5F),
         disabledActiveTrackColor: Color = MaterialTheme.colorScheme.secondaryContainer,
+        disabledInactiveTickColor: Color = MaterialTheme.colorScheme.primary.copy(0.3F),
         disabledInactiveTrackColor: Color = MaterialTheme.colorScheme.primaryContainer.copy(0.5F)
     ): WaveSliderColors = WaveSliderColors(
         thumbColor = thumbColor,
         activeTrackColor = activeTrackColor,
+        activeTickColor = activeTickColor,
         inactiveTrackColor = inactiveTrackColor,
+        inactiveTickColor = inactiveTickColor,
         disabledThumbColor = disabledThumbColor,
+        disabledActiveTickColor = disabledActiveTickColor,
         disabledActiveTrackColor = disabledActiveTrackColor,
+        disabledInactiveTickColor = disabledInactiveTickColor,
         disabledInactiveTrackColor = disabledInactiveTrackColor
     )
 

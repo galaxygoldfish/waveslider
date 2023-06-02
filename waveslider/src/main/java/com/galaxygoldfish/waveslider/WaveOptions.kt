@@ -9,5 +9,6 @@ package com.galaxygoldfish.waveslider
  */
 data class WaveOptions internal constructor(
     val amplitude: Float,
-    val frequency: Float
+    val frequency: Float,
+    val trackWidth: Float
 )

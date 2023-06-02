@@ -39,9 +39,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.lerp
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.PointMode
-import androidx.compose.ui.graphics.StampedPathEffectStyle
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import kotlin.math.sin
@@ -169,7 +167,10 @@ fun WaveSlider(
                     } else {
                         colors.disabledActiveTrackColor
                     },
-                    style = Stroke(width = 8f, cap = StrokeCap.Round)
+                    style = Stroke(
+                        width = waveOptions.trackWidth,
+                        cap = StrokeCap.Round
+                    )
                 )
                 drawLine(
                     color = if (enabled) {
@@ -177,7 +178,7 @@ fun WaveSlider(
                     } else {
                         colors.disabledInactiveTrackColor
                     },
-                    strokeWidth = 8F,
+                    strokeWidth = waveOptions.trackWidth,
                     cap = StrokeCap.Round,
                     start = Offset(endX + 1, centerY),
                     end = Offset(size.width, centerY)
@@ -215,7 +216,7 @@ fun WaveSlider(
                                 Color.Transparent
                             }
                         },
-                        strokeWidth = 10F,
+                        strokeWidth = waveOptions.trackWidth,
                         cap = StrokeCap.Round
                     )
                 }

@@ -61,10 +61,12 @@ object WaveSliderDefaults {
     @Composable
     fun waveOptions(
         amplitude: Float = 15F,
-        frequency: Float = 0.07F
+        frequency: Float = 0.07F,
+        trackWidth: Float = 8F
     ): WaveOptions = WaveOptions(
         amplitude = amplitude,
-        frequency = frequency
+        frequency = frequency,
+        trackWidth = trackWidth
     )
 
 }

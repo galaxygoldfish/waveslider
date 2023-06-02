@@ -167,7 +167,10 @@ fun WaveSlider(
                     } else {
                         colors.disabledActiveTrackColor
                     },
-                    style = Stroke(width = 8f, cap = StrokeCap.Round)
+                    style = Stroke(
+                        width = waveOptions.trackWidth,
+                        cap = StrokeCap.Round
+                    )
                 )
                 drawLine(
                     color = if (enabled) {
@@ -213,7 +216,7 @@ fun WaveSlider(
                                 Color.Transparent
                             }
                         },
-                        strokeWidth = 5f,
+                        strokeWidth = waveOptions.trackWidth,
                         cap = StrokeCap.Round
                     )
                 }

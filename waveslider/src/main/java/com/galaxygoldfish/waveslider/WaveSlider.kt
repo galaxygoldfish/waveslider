@@ -61,6 +61,10 @@ import kotlin.math.sin
  * slider. By default, a [PillThumb] is used. If you are creating a custom
  * thumb, use [LocalThumbColor] to match the colors of the rest of the slider
  */
+private fun stepsToTickFractions(steps: Int): FloatArray {
+    return if (steps == 0) floatArrayOf() else FloatArray(steps + 2) { it.toFloat() / (steps + 1) }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WaveSlider(
@@ -97,10 +101,10 @@ fun WaveSlider(
     val phaseShiftFloat = infiniteTransition.animateFloat(
         label = "Wave phase shift",
         initialValue = 0F,
-        targetValue = frequency * 1000 * 4 * 3.14F,
+        targetValue = 90f,
         animationSpec = infiniteRepeatable(
             animation = keyframes {
-                durationMillis = animationOptions.animationSpeedMs
+                durationMillis = 1000
             },
             repeatMode = RepeatMode.Restart
         )
@@ -129,7 +133,7 @@ fun WaveSlider(
                 thumb()
             }
         },
-        track = { sliderPositions ->
+        track = { sliderState ->
             val animatedAmplitude = animateFloatAsState(
                 targetValue = if (animationOptions.flatlineOnDrag) {
                     if (animationOptions.reverseFlatline) {
@@ -167,10 +171,7 @@ fun WaveSlider(
                     } else {
                         colors.disabledActiveTrackColor
                     },
-                    style = Stroke(
-                        width = waveOptions.trackWidth,
-                        cap = StrokeCap.Round
-                    )
+                    style = Stroke(width = 8f, cap = StrokeCap.Round)
                 )
                 drawLine(
                     color = if (enabled) {
@@ -178,14 +179,14 @@ fun WaveSlider(
                     } else {
                         colors.disabledInactiveTrackColor
                     },
-                    strokeWidth = waveOptions.trackWidth,
+                    strokeWidth = 8F,
                     cap = StrokeCap.Round,
                     start = Offset(endX + 1, centerY),
                     end = Offset(size.width, centerY)
                 )
-                sliderPositions.tickFractions.groupBy {
-                    it > sliderPositions.activeRange.endInclusive ||
-                            it < sliderPositions.activeRange.start
+                stepsToTickFractions(sliderState.steps).groupBy {
+                    it > sliderState.valueRange.endInclusive ||
+                            it < sliderState.valueRange.start
                 }.forEach { (outsideFraction, list) ->
                     drawPoints(
                         points = list.map {
@@ -216,7 +217,7 @@ fun WaveSlider(
                                 Color.Transparent
                             }
                         },
-                        strokeWidth = waveOptions.trackWidth,
+                        strokeWidth = 10F,
                         cap = StrokeCap.Round
                     )
                 }

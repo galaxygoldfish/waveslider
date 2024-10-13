@@ -184,9 +184,9 @@ fun WaveSlider(
                     start = Offset(endX + 1, centerY),
                     end = Offset(size.width, centerY)
                 )
-                sliderState.tickFractions.groupBy {
-                    it > sliderState.activeRange.endInclusive ||
-                            it < sliderState.activeRange.start
+                stepsToTickFractions(sliderState.steps).groupBy {
+                    it > sliderState.valueRange.endInclusive ||
+                            it < sliderState.valueRange.start
                 }.forEach { (outsideFraction, list) ->
                     drawPoints(
                         points = list.map {

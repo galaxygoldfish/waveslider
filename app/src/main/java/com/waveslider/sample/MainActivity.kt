@@ -208,7 +208,7 @@ class MainActivity : ComponentActivity() {
                                     Icon(
                                         painter = painterResource(R.drawable.ic_github),
                                         contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.onPrimaryContainer
+                                        tint = MaterialTheme.colorScheme.primaryContainer
                                     )
                                     Text(
                                         text = stringResource(id = R.string.button_view_external),

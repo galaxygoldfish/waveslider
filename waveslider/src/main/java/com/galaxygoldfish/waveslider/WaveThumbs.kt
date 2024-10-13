@@ -40,7 +40,7 @@ fun PillThumb() {
                 .size(6.dp, 30.dp)
                 .clip(MaterialTheme.shapes.small)
                 .background(LocalThumbColor.current)
-                .align(Alignment.CenterEnd)
+                .align(Alignment.Center)
         )
     }
 }

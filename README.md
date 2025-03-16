@@ -56,8 +56,10 @@ WaveSlider(
         thumbColor = MaterialTheme.colorScheme.secondary,
         activeTrackColor = MaterialTheme.colorScheme.secondary
     ),
-    amplitude = 15F,
-    frequency = 0.07F,
+    waveOptions = WaveSliderDefaults.waveOptions(
+        amplitude = 10F,
+        frequency = 0.07F,
+    ),
     modifier = Modifier.padding(
         horizontal = 20.dp, 
         vertical = 50.dp
